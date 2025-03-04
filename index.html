@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Soundboard</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .sound-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .sound-button {
+            padding: 15px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .sound-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Meme Soundboard</h1>
+        <div class="sound-buttons">
+            <button class="sound-button" data-sound="sounds/sound1.mp3">Sound 1</button>
+            <button class="sound-button" data-sound="sounds/sound2.mp3">Sound 2</button>
+            <button class="sound-button" data-sound="sounds/sound3.mp3">Sound 3</button>
+            </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const soundButtons = document.querySelectorAll('.sound-button');
+
+            soundButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const soundFile = button.getAttribute('data-sound');
+                    playSound(soundFile);
+                });
+            });
+
+            function playSound(soundFile) {
+                const audio = new Audio(soundFile);
+                audio.play();
+            }
+        });
+    </script>
+</body>
+</html>
